@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import TechGrid from "./components/TechGrid.jsx";
+import StackSidebar from "./components/StackSidebar.jsx";
 
 function App() {
   const [techList, setTechList] = useState([]);
   const [stack, setStack] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // load the technology data once, from public/data so nothing is hardcoded
   useEffect(() => {
     fetch("/data/techData.json")
       .then((res) => res.json())
@@ -22,6 +22,14 @@ function App() {
     const isDuplicate = stack.some((item) => item.id === tech.id);
     if (isDuplicate) return;
     setStack((prev) => [...prev, tech]);
+  };
+
+  const removeFromStack = (id) => {
+    setStack((prev) => prev.filter((t) => t.id !== id));
+  };
+
+  const clearStack = () => {
+    setStack([]);
   };
 
   return (
@@ -39,7 +47,13 @@ function App() {
           techList={techList}
           stack={stack}
           onAddToStack={addToStack}
-          sidebar={null}
+          sidebar={
+            <StackSidebar
+              stack={stack}
+              onRemove={removeFromStack}
+              onRemoveAll={clearStack}
+            />
+          }
         />
       )}
     </div>

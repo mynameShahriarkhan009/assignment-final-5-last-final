@@ -4,3 +4,11 @@ body {
   font-family: "Inter", "Segoe UI", Roboto, sans-serif;
   color: #1a1a1a;
 }
+
+.btn-gradient {
+  background: linear-gradient(90deg, #f97316 0%, #ec4899 100%);
+}
+
+.btn-gradient:hover {
+  opacity: 0.92;
+}

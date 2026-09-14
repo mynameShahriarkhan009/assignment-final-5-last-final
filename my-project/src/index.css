@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-purple: #8b3ce0;
+  --color-brand-pink: #ec4899;
+  --color-brand-orange: #f97316;
+}
+
 body {
   font-family: "Inter", "Segoe UI", Roboto, sans-serif;
   color: #1a1a1a;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #f97316 0%, #ec4899 55%, #a855f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .btn-gradient {
@@ -11,4 +24,8 @@ body {
 
 .btn-gradient:hover {
   opacity: 0.92;
+}
+
+.page-shell {
+  min-width: 1440px;
 }
